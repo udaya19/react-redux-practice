@@ -1,12 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
-  const value = 20;
+  const dispatch = useDispatch();
+
+  const addBtn = () => {
+    dispatch({
+      type: "increment",
+    });
+  };
+  const subBtn = () => {
+    dispatch({
+      type: "decrement",
+    });
+  };
+  const incrementByValue = () => {
+    //dispatching the action
+    dispatch({
+      type: "incrementByValue",
+      payload: 20,
+    });
+  };
   return (
     <div>
-      <h2>{value}</h2>
-      <button>Increment</button>
-      <button>Decrement</button>
+      <button onClick={addBtn}>Increment</button>
+      <button onClick={subBtn}>Decrement</button>
+      <button onClick={incrementByValue}>Increment by value</button>
     </div>
   );
 };
